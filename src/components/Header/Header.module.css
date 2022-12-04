@@ -1,0 +1,22 @@
+.header {
+  background-color:  rgb(232, 235, 238);
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.5);
+  grid-area: h;
+
+  border-radius: 2rem;
+  padding: 2rem;
+}
+
+.header img {
+  width: 80px;
+}
+
+.login_block {
+  float: right;
+
+}
+
+.login_block a {
+ 
+  text-decoration: none;
+}

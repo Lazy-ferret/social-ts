@@ -1,0 +1,27 @@
+.nav {
+  background-color: rgb(250, 250, 250);
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.5);
+  grid-area: n;
+  border-radius: 2rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item {
+  width: 10rem;
+  height: 3rem;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  
+}
+
+.item a {
+  text-decoration: none;
+  
+}
+
+.item a.active {
+  color: goldenrod;
+}

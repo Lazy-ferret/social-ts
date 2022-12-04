@@ -1,0 +1,40 @@
+body {
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-style: normal;
+  font-size: 1.9rem;
+  line-height: 2.2rem;
+
+  color: rgb(31, 30, 29);
+}
+
+.app-wrapper {
+  width: 100%;
+  max-width: 1920px;
+  min-width: 800px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 0.7rem;
+  margin: 0 auto;
+  
+  display: grid;
+  grid-template-areas:
+    "h h"
+    "n c";
+  grid-template-rows: 10rem 1fr;
+  grid-template-columns: 2fr 10fr;
+  grid-gap: 0.7rem;
+}
+
+.app-wrapper-content {
+  background-color: rgb(250, 250, 250);
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.5);
+  grid-area: c;
+  border-radius: 2rem;
+  padding: 2rem;
+
+}
+
+button {
+  cursor: pointer
+}
