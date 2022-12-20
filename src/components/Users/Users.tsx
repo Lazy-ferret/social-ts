@@ -2,7 +2,16 @@ import React from 'react'
 import Paginator from '../common/Paginator/Paginator'
 import User from './User'
 
-const Users = ({ totalUsersCount, pageSize, onPageChanged, currentPage, user, ...props }) => {
+type PropsType = {
+    totalUsersCount: number
+    pageSize: number
+    onPageChanged: () => void
+    currentPage: number
+    user
+    ...props
+}
+
+const Users: React.FC<PropsType> = ({ totalUsersCount, pageSize, onPageChanged, currentPage, user, ...props }) => {
 
     return (
         <div>

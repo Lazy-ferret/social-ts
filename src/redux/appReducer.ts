@@ -1,4 +1,4 @@
-import { getAuthUserData } from './authReducer.ts'
+import { getAuthUserData } from "./authReducer"
 
 const INITIALIZED_SUCCESS = 'social-network/app/INITIALIZED_SUCCESS'
 
@@ -10,12 +10,12 @@ const initialState: InitialStateType = {
     initialized: false
 }
 
-const appReducer = (state = initialState, action: any) : InitialStateType => {
+const appReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
         case INITIALIZED_SUCCESS:
             return {
                 ...state,
-                initialized: true, 
+                initialized: true,
             }
         default:
             return state
@@ -26,7 +26,7 @@ type InitializedSuccessActionType = {
     type: typeof INITIALIZED_SUCCESS
 }
 
-export const initializedSuccess = () : InitializedSuccessActionType => ({ type: INITIALIZED_SUCCESS })
+export const initializedSuccess = (): InitializedSuccessActionType => ({ type: INITIALIZED_SUCCESS })
 
 export const initializeApp = () => (dispatch: any) => {
     const dispatchResult = dispatch(getAuthUserData())
