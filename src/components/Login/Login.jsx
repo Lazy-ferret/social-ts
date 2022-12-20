@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import { requiredField } from '../../utils/validators/validators'
 import { Input } from '../common/FormsControl/FormsControl'
-import { login } from './../../redux/authReducer'
+import { login } from './../../redux/authReducer.ts'
 import style from './Login.module.css'
 
 

@@ -9,7 +9,7 @@ import Navbar from './components/Navbar/Navbar';
 import News from './components/News/News';
 import Settings from './components/Settings/Settings';
 import UsersContainer from './components/Users/UsersContainer';
-import { initializeApp } from './../src/redux/appReducer'
+import { initializeApp } from './../src/redux/appReducer.ts'
 import { compose } from 'redux';
 import withRouter from './hoc/WithRouter';
 import Preloader from './components/common/Preloader/Preloader';
