@@ -1,4 +1,4 @@
-import { getAuthUserData } from "./authReducer"
+import { getAuthUserData } from "./authReducer.ts"
 
 const INITIALIZED_SUCCESS = 'social-network/app/INITIALIZED_SUCCESS'
 
