@@ -1,4 +1,5 @@
 import React from 'react'
+// @ts-ignore
 import Paginator from '../common/Paginator/Paginator.tsx'
 import User from './User'
 import { UserType } from './../../types/types'

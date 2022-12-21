@@ -7,7 +7,7 @@ import Post from "./Post/Post";
 
 const MyPosts = React.memo((props) => {
     const postsElements = [...props.posts]
-        .reverse()
+       .reverse()
         .map(post => <Post message={post.message} likesCount={post.likesCount} key={post.id} />)
 
     const onAddNewMessageClick = (values) => {

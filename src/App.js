@@ -8,7 +8,7 @@ import Music from './components/Music/Music';
 import Navbar from './components/Navbar/Navbar';
 import News from './components/News/News';
 import Settings from './components/Settings/Settings';
-import UsersContainer from './components/Users/UsersContainer';
+import UsersContainer from './components/Users/UsersContainer.tsx';
 import { initializeApp } from './../src/redux/appReducer.ts'
 import { compose } from 'redux';
 import withRouter from './hoc/WithRouter';
@@ -22,6 +22,10 @@ class App extends React.Component {
   // catchAllUnhandledErrors = (promiseRejectionEvent) => {
   //   alert('Some error ')
   // }
+
+  
+
+
   
   componentDidMount() {
     this.props.initializeApp()
@@ -62,7 +66,7 @@ class App extends React.Component {
 
               <Route
                 path="/users"
-                element={<UsersContainer />} />
+                element={<UsersContainer pageTitle='Users'/>} />
 
               <Route
                 path="/login"
