@@ -1,3 +1,6 @@
+import { AppStateType } from './reduxStore';
+import { ThunkAction } from 'redux-thunk';
+import { Dispatch } from 'redux';
 import { authAPI, securityAPI } from "../api/api"
 
 const SET_USER_DATA = 'social-network/auth/SET_USER_DATA'
@@ -22,7 +25,7 @@ const initialState: InitialStateType = {
     error: null
 }
 
-const authReducer = (state = initialState, action: any): InitialStateType => {
+const authReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
     switch (action.type) {
         case SET_USER_DATA:
         case SET_ERROR:
@@ -35,6 +38,9 @@ const authReducer = (state = initialState, action: any): InitialStateType => {
             return state
     }
 }
+
+type ActionsTypes = SetErrorType | SetAuthUserDataType |
+    GetCaptchaUrlSuccessType
 
 type SetErrorPayloadType = {
     error: string
@@ -78,8 +84,9 @@ export const getCaptchaUrlSuccess = (captchaUrl: string): GetCaptchaUrlSuccessTy
     type: GET_CAPTCHA_URL_SUCCESS, payload: { captchaUrl }
 })
 
+type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsTypes>
 
-export const getAuthUserData = () => async (dispatch: any) => {
+export const getAuthUserData = (): ThunkType => async (dispatch) => {
     const response = await authAPI.authMe()
     if (response.resultCode === 0) {
         let { id, email, login } = response.data
@@ -87,27 +94,28 @@ export const getAuthUserData = () => async (dispatch: any) => {
     }
 }
 
-export const login = (email: string, password: string, rememberMe: boolean, captcha: any) => async (dispatch: any) => {
-    const response = await authAPI.login(email, password, rememberMe, captcha)
-    if (response.data.resultCode === 0) {
-        dispatch(getAuthUserData())
-    } else {
-        if (response.data.resultCode === 10) {
-            dispatch(getCaptchaUrl())
+export const login = (email: string, password: string, rememberMe: boolean, captcha: any): ThunkType =>
+    async (dispatch) => {
+        const response = await authAPI.login(email, password, rememberMe, captcha)
+        if (response.data.resultCode === 0) {
+            dispatch(getAuthUserData())
+        } else {
+            if (response.data.resultCode === 10) {
+                dispatch(getCaptchaUrl())
+            }
+            const message = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error'
+            dispatch(setError(message))
         }
-        const message = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error'
-        dispatch(setError(message))
     }
-}
 
-export const logout = () => async (dispatch: any) => {
+export const logout = (): ThunkType => async (dispatch) => {
     const response = await authAPI.logout()
     if (response.data.resultCode === 0) {
         dispatch(setAuthUserData(null, null, null, false, null))
     }
 }
 
-export const getCaptchaUrl = () => async (dispatch : any) => {
+export const getCaptchaUrl = (): ThunkType => async (dispatch) => {
     const response = await securityAPI.getCaptchaUrl()
     const captchaUrl = response.data.url
     dispatch(getCaptchaUrlSuccess(captchaUrl))
