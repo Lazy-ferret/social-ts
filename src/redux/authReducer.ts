@@ -1,7 +1,7 @@
-import { AppStateType } from './reduxStore';
-import { ThunkAction } from 'redux-thunk';
-import { Dispatch } from 'redux';
-import { authAPI, securityAPI } from "../api/api"
+import { AppStateType } from './reduxStore'
+import { ThunkAction } from 'redux-thunk'
+// @ts-ignore
+import { authAPI, securityAPI, ResultCodesEnum, ResultCodeForCaptchaEnum } from "../api/api.ts"
 
 const SET_USER_DATA = 'social-network/auth/SET_USER_DATA'
 const SET_ERROR = 'social-network/auth/SET_ERROR'
@@ -87,23 +87,23 @@ export const getCaptchaUrlSuccess = (captchaUrl: string): GetCaptchaUrlSuccessTy
 type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsTypes>
 
 export const getAuthUserData = (): ThunkType => async (dispatch) => {
-    const response = await authAPI.authMe()
-    if (response.resultCode === 0) {
-        let { id, email, login } = response.data
+    const meData = await authAPI.authMe()
+    if (meData.resultCode === ResultCodesEnum.Success) {
+        let { id, email, login } = meData.data
         dispatch(setAuthUserData(id, email, login, true, null))
     }
 }
 
 export const login = (email: string, password: string, rememberMe: boolean, captcha: any): ThunkType =>
     async (dispatch) => {
-        const response = await authAPI.login(email, password, rememberMe, captcha)
-        if (response.data.resultCode === 0) {
+        const loginData = await authAPI.login(email, password, rememberMe, captcha)
+        if (loginData.resultCode === ResultCodesEnum.Success) {
             dispatch(getAuthUserData())
         } else {
-            if (response.data.resultCode === 10) {
+            if (loginData.resultCode === ResultCodeForCaptchaEnum.CaptchaIsRequired) {
                 dispatch(getCaptchaUrl())
             }
-            const message = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error'
+            const message = loginData.messages.length > 0 ? loginData.messages[0] : 'Some error'
             dispatch(setError(message))
         }
     }
