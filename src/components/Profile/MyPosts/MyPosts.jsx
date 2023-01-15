@@ -1,7 +1,7 @@
 import React from "react";
 import { Field, Form } from "react-final-form";
 import { composeValidators, maxLengthCreator, requiredField } from "../../../utils/validators/validators";
-import { Textarea } from "../../common/FormsControl/FormsControl";
+import { Textarea } from "../../common/FormsControl/FormsControl.tsx";
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 

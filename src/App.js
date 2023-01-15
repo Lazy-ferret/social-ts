@@ -1,21 +1,21 @@
-import React, { Suspense } from 'react';
-import { connect } from 'react-redux';
-import { Navigate, Route, Routes } from 'react-router-dom';
-import './App.css';
-import HeaderContainer from './components/Header/HeaderContainer';
-import Login from './components/Login/Login';
-import Music from './components/Music/Music';
-import Navbar from './components/Navbar/Navbar';
-import News from './components/News/News';
-import Settings from './components/Settings/Settings';
-import UsersContainer from './components/Users/UsersContainer.tsx';
+import React, { Suspense } from 'react'
+import { connect } from 'react-redux'
+import { Navigate, Route, Routes } from 'react-router-dom'
+import './App.css'
+import HeaderContainer from './components/Header/HeaderContainer'
+import Login from './components/Login/Login.tsx'
+import Music from './components/Music/Music'
+import Navbar from './components/Navbar/Navbar'
+import News from './components/News/News'
+import Settings from './components/Settings/Settings'
+import UsersContainer from './components/Users/UsersContainer.tsx'
 import { initializeApp } from './../src/redux/appReducer.ts'
-import { compose } from 'redux';
-import withRouter from './hoc/WithRouter';
-import Preloader from './components/common/Preloader/Preloader';
+import { compose } from 'redux'
+import withRouter from './hoc/WithRouter'
+import Preloader from './components/common/Preloader/Preloader'
 
-const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
-const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'))
+const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'))
 
 class App extends React.Component {
   
@@ -23,10 +23,6 @@ class App extends React.Component {
   //   alert('Some error ')
   // }
 
-  
-
-
-  
   componentDidMount() {
     this.props.initializeApp()
     // window.addEventListener('unhandledrejection', this.catchAllUnhandledErrors)

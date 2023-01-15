@@ -2,13 +2,23 @@ import React from 'react'
 import { Field, Form } from 'react-final-form'
 import { connect } from 'react-redux'
 import { Navigate } from 'react-router-dom'
+// @ts-ignore
+import { AppStateType } from '../../redux/reduxStore.ts'
 import { requiredField } from '../../utils/validators/validators'
-import { Input } from '../common/FormsControl/FormsControl'
+// @ts-ignore
+import { Input } from '../common/FormsControl/FormsControl.tsx'
+// @ts-ignore
 import { login } from './../../redux/authReducer.ts'
+// @ts-ignore
 import style from './Login.module.css'
 
+type LoginFormPropsType = {    
+    onSubmit: (values: LoginFormValuesType) => void    
+    error: string | null
+    captchaUrl: string | null    
+}
 
-const LoginForm = (props) => {
+ const LoginForm: React.FC<LoginFormPropsType> = (props) => {
     const { onSubmit, error, captchaUrl } = props
 
     return (
@@ -16,7 +26,7 @@ const LoginForm = (props) => {
             initialValues={{
                 email: '',
                 password: '',
-                rememberMe: false, 
+                rememberMe: false,
                 captcha: null
             }}
             onSubmit={onSubmit}>
@@ -24,27 +34,32 @@ const LoginForm = (props) => {
                 <form onSubmit={handleSubmit}>
 
                     <div>
-                        <Field
+                        <Field<string>
                             component={Input}
                             name={'email'}
                             validate={requiredField}
                             placeholder={'Email'} />
                     </div>
                     <div>
-                        <Field component={Input}
+                        <Field<string>
+                            component={Input}
                             name={'password'}
                             type={'password'}
                             validate={requiredField}
                             placeholder={'Password'} />
                     </div>
                     <div>
-                        <Field component={Input} name={'rememberMe'} type={'checkbox'} /> remember me
+                        <Field<boolean>
+                            component={Input}
+                            name={'rememberMe'}
+                            type={'checkbox'} /> remember me
                     </div>
-                    {captchaUrl && <img src={captchaUrl} alt='captcha'/>}
-                    {captchaUrl && <Field component={Input}
-                            name={'captcha'}
-                            validate={requiredField}
-                            placeholder={'captcha'} />}
+                    {captchaUrl && <img src={captchaUrl} alt='captcha' />}
+                    {captchaUrl && <Field<string>
+                        component={Input}
+                        name={'captcha'}
+                        validate={requiredField}
+                        placeholder={'captcha'} />}
 
                     {error && <div className={style.formError}>{error}</div>}
                     <div>
@@ -56,8 +71,25 @@ const LoginForm = (props) => {
     )
 }
 
-const Login = (props) => {
-    const onSubmit = (formData) => {
+type MapStatePropsType = {
+    isAuth: boolean
+    captchaUrl: string | null
+    error: string | null
+}
+
+type MapDispatchPropsType = {
+    login: (email: string, password: string, rememberMe: boolean, captcha: string | null) => void
+}
+
+type LoginFormValuesType = {
+    email: string
+    password: string
+    rememberMe: boolean
+    captcha: string | null
+}
+
+const Login: React.FC<MapStatePropsType & MapDispatchPropsType> = (props) => {
+    const onSubmit = (formData: LoginFormValuesType) => {
         props.login(formData.email, formData.password, formData.rememberMe, formData.captcha)
     }
 
@@ -73,7 +105,7 @@ const Login = (props) => {
     )
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
     isAuth: state.auth.isAuth,
     error: state.auth.error,
     captchaUrl: state.auth.captchaUrl

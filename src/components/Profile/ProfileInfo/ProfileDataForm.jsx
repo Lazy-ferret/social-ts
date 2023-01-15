@@ -1,9 +1,8 @@
-import React from "react";
+import React from 'react'
 import styles from './ProfileInfo.module.css'
-import { Field, Form } from "react-final-form";
-import { Input, Textarea } from "../../common/FormsControl/FormsControl";
+import { Field, Form } from 'react-final-form'
+import { Input, Textarea } from '../../common/FormsControl/FormsControl.tsx'
 import style from './../../Login/Login.module.css'
-
 
 const ProfileDataForm = ({ profile, saveFormData, error }) => {
 
@@ -61,8 +60,6 @@ const ProfileDataForm = ({ profile, saveFormData, error }) => {
                 </form>
             )}
         </Form>
-
-
     )
 }
 
