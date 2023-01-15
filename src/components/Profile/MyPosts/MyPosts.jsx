@@ -1,14 +1,14 @@
-import React from "react";
-import { Field, Form } from "react-final-form";
+import React from 'react'
+import { Field, Form } from 'react-final-form'
 // @ts-ignore
-import { composeValidators, maxLengthCreator, requiredField } from "../../../utils/validators/validators.ts";
-import { Textarea } from "../../common/FormsControl/FormsControl.tsx";
+import { composeValidators, maxLengthCreator, requiredField } from '../../../utils/validators/validators.ts'
+import { Textarea } from '../../common/FormsControl/FormsControl.tsx'
 import s from './MyPosts.module.css'
-import Post from "./Post/Post";
+import Post from './Post/Post'
 
 const MyPosts = React.memo((props) => {
     const postsElements = [...props.posts]
-       .reverse()
+        .reverse()
         .map(post => <Post message={post.message} likesCount={post.likesCount} key={post.id} />)
 
     const onAddNewMessageClick = (values) => {
@@ -28,7 +28,6 @@ const MyPosts = React.memo((props) => {
 })
 
 const AddPostForm = ({ onSubmit }) => {
-
     return (
         <Form
             initialValues={{
@@ -38,7 +37,6 @@ const AddPostForm = ({ onSubmit }) => {
         >
             {({ handleSubmit }) => (
                 <form onSubmit={handleSubmit}>
-
                     <div>
                         <Field component={Textarea}
                             validate={composeValidators(requiredField, maxLengthCreator(50))}

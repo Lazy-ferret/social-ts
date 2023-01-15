@@ -35,14 +35,14 @@ const LoginForm: React.FC<LoginFormPropsType> = (props) => {
                 <form onSubmit={handleSubmit}>
 
                     <div>
-                        <Field<string>
+                        <Field
                             component={Input}
                             name={'email'}
                             validate={requiredField}
                             placeholder={'Email'} />
                     </div>
                     <div>
-                        <Field<string>
+                        <Field
                             component={Input}
                             name={'password'}
                             type={'password'}
@@ -50,13 +50,13 @@ const LoginForm: React.FC<LoginFormPropsType> = (props) => {
                             placeholder={'Password'} />
                     </div>
                     <div>
-                        <Field<boolean>
+                        <Field
                             component={Input}
                             name={'rememberMe'}
                             type={'checkbox'} /> remember me
                     </div>
                     {captchaUrl && <img src={captchaUrl} alt='captcha' />}
-                    {captchaUrl && <Field<string>
+                    {captchaUrl && <Field
                         component={Input}
                         name={'captcha'}
                         validate={requiredField}
@@ -88,6 +88,8 @@ type LoginFormValuesType = {
     rememberMe: boolean
     captcha: string | null
 }
+
+
 
 const Login: React.FC<MapStatePropsType & MapDispatchPropsType> = (props) => {
     const onSubmit = (formData: LoginFormValuesType) => {
