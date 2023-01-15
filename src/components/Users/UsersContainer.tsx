@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 // @ts-ignore
-import { follow, unfollow, deleteUsers, requestUsers } from '../../redux/usersReducer.ts'
+import { follow, unfollow, requestUsers, actions as deleteUsers } from '../../redux/usersReducer.ts'
 // @ts-ignore
 import { getUsers, getPageSize, getTotalUsersCount, getCurrentPage, getIsFetching, getFollowingInProgress } from '../../redux/users-selectors.ts'
 // @ts-ignore
@@ -16,7 +16,7 @@ type MapStatePropsType = {
     pageSize: number
     isFetching: boolean
     totalUsersCount: number
-    users: Array<UserType>  
+    users: Array<UserType>
     followingInProgress: Array<number>
 }
 
