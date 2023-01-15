@@ -1,6 +1,7 @@
 import React from 'react'
 import { Field, Form } from 'react-final-form'
-import { composeValidators, maxLengthCreator, requiredField } from '../../utils/validators/validators'
+// @ts-ignore
+import { composeValidators, maxLengthCreator, requiredField } from '../../utils/validators/validators.ts'
 import { Textarea } from '../common/FormsControl/FormsControl.tsx'
 import DialogItem from './DialogItem/DialogItem'
 import s from './Dialogs.module.css'

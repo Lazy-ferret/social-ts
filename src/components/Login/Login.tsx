@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 // @ts-ignore
 import { AppStateType } from '../../redux/reduxStore.ts'
-import { requiredField } from '../../utils/validators/validators'
+// @ts-ignore
+import { requiredField } from '../../utils/validators/validators.ts'
 // @ts-ignore
 import { Input } from '../common/FormsControl/FormsControl.tsx'
 // @ts-ignore
@@ -12,13 +13,13 @@ import { login } from './../../redux/authReducer.ts'
 // @ts-ignore
 import style from './Login.module.css'
 
-type LoginFormPropsType = {    
-    onSubmit: (values: LoginFormValuesType) => void    
+type LoginFormPropsType = {
+    onSubmit: (values: LoginFormValuesType) => void
     error: string | null
-    captchaUrl: string | null    
+    captchaUrl: string | null
 }
 
- const LoginForm: React.FC<LoginFormPropsType> = (props) => {
+const LoginForm: React.FC<LoginFormPropsType> = (props) => {
     const { onSubmit, error, captchaUrl } = props
 
     return (
