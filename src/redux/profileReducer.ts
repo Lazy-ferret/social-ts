@@ -1,5 +1,4 @@
-import { AppStateType } from './reduxStore'
-import { ThunkAction } from 'redux-thunk'
+import { BaseThunkType } from './reduxStore'
 // @ts-ignore
 import { profileAPI } from '../api/profile-api.ts'
 // @ts-ignore
@@ -119,7 +118,7 @@ export const savePhotoSuccess = (photos: PhotosType): SavePhotoSuccessType => ({
     type: SAVE_PHOTO_SUCCESS, photos
 })
 
-type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsTypes>
+type ThunkType = BaseThunkType<ActionsTypes>
 
 export const getUserProfile = (userId: number): ThunkType =>
     async (dispatch) => {
@@ -149,7 +148,7 @@ export const savePhoto = (file: any): ThunkType => async (dispatch) => {
     }
 }
 
-export const updateProfile = (profile: ProfileType) => async (dispatch: any , getState: any) => {
+export const updateProfile = (profile: ProfileType) => async (dispatch: any, getState: any) => {
     try {
         const userId = getState().auth.userId
         const data = await profileAPI.updateProfile(profile)
