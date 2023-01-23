@@ -1,7 +1,11 @@
 import { AppStateType } from './reduxStore'
 import { ThunkAction } from 'redux-thunk'
 // @ts-ignore
-import { authAPI, securityAPI, ResultCodesEnum, ResultCodeForCaptchaEnum } from "../api/api.ts"
+import { authAPI } from '../api/auth-api.ts'
+// @ts-ignore
+import { ResultCodesEnum, ResultCodeForCaptchaEnum } from '../api/api.ts'
+// @ts-ignore
+import { securityAPI} from '../api/security-api.ts'
 
 const SET_USER_DATA = 'social-network/auth/SET_USER_DATA'
 const SET_ERROR = 'social-network/auth/SET_ERROR'
@@ -109,15 +113,15 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
     }
 
 export const logout = (): ThunkType => async (dispatch) => {
-    const response = await authAPI.logout()
-    if (response.data.resultCode === 0) {
+    const data = await authAPI.logout()
+    if (data.resultCode === 0) {
         dispatch(setAuthUserData(null, null, null, false, null))
     }
 }
 
 export const getCaptchaUrl = (): ThunkType => async (dispatch) => {
-    const response = await securityAPI.getCaptchaUrl()
-    const captchaUrl = response.data.url
+    const data = await securityAPI.getCaptchaUrl()
+    const captchaUrl = data.url
     dispatch(getCaptchaUrlSuccess(captchaUrl))
 }
 

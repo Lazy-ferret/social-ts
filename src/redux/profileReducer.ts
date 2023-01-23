@@ -1,9 +1,10 @@
-import { AppStateType } from './reduxStore';
-import { ThunkAction } from 'redux-thunk';
+import { AppStateType } from './reduxStore'
+import { ThunkAction } from 'redux-thunk'
 // @ts-ignore
-import { profileAPI, usersAPI } from "../api/api.ts"
-import { PhotosType, PostsType, ProfileType } from "../types/types"
-import { Dispatch } from 'redux';
+import { profileAPI } from '../api/profile-api.ts'
+// @ts-ignore
+import { usersAPI } from '../api/users-api.ts'
+import { PhotosType, PostsType, ProfileType } from '../types/types'
 
 const ADD_POST = 'social-network/profile/ADD-POST'
 const SET_USER_PROFILE = 'social-network/profile/SET_USER_PROFILE'
@@ -122,41 +123,41 @@ type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsTypes>
 
 export const getUserProfile = (userId: number): ThunkType =>
     async (dispatch) => {
-        const response = await usersAPI.getProfile(userId)
-        dispatch(setUserProfile(response))
+        const data = await usersAPI.getProfile(userId)
+        dispatch(setUserProfile(data))
         dispatch(setError(null))
     }
 
 export const getStatus = (userId: number): ThunkType =>
     async (dispatch) => {
-        const response = await profileAPI.getStatus(userId)
-        dispatch(setStatus(response.data))
+        const data = await profileAPI.getStatus(userId)
+        dispatch(setStatus(data))
     }
 
 export const updateStatus = (status: string): ThunkType =>
     async (dispatch) => {
-        const response = await profileAPI.updateStatus(status)
-        if (response.data.resultCode === 0) {
+        const data = await profileAPI.updateStatus(status)
+        if (data.resultCode === 0) {
             dispatch(setStatus(status))
         }
     }
 
 export const savePhoto = (file: any): ThunkType => async (dispatch) => {
-    const response = await profileAPI.savePhoto(file)
-    if (response.data.resultCode === 0) {
-        dispatch(savePhotoSuccess(response.data.data.photos))
+    const data = await profileAPI.savePhoto(file)
+    if (data.resultCode === 0) {
+        dispatch(savePhotoSuccess(data.data.photos))
     }
 }
 
 export const updateProfile = (profile: ProfileType) => async (dispatch: any , getState: any) => {
     try {
         const userId = getState().auth.userId
-        const response = await profileAPI.updateProfile(profile)
-        if (response.data.resultCode === 0) {
+        const data = await profileAPI.updateProfile(profile)
+        if (data.resultCode === 0) {
             dispatch(getUserProfile(userId))
         }
-        if (response.data.resultCode !== 0) {
-            const message = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error'
+        if (data.resultCode !== 0) {
+            const message = data.messages.length > 0 ? data.messages[0] : 'Some error'
             dispatch(setError(message))
             return Promise.reject(message)
         }

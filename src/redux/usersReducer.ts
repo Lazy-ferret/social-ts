@@ -1,6 +1,6 @@
 import { AppStateType, InferActionsTypes } from './reduxStore'
 // @ts-ignore
-import { usersAPI } from '../api/api.ts'
+import { usersAPI } from '../api/users-api.ts'
 import { UserType } from '../types/types'
 import { updateObjectInArray } from '../utils/helpers/object-helpers'
 import { Dispatch } from 'redux'
