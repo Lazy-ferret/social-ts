@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 // @ts-ignore
-import { follow, unfollow, requestUsers, actions as deleteUsers } from '../../redux/usersReducer.ts'
+import { follow, unfollow, requestUsers, actions  } from '../../redux/usersReducer.ts'
 // @ts-ignore
 import { getUsers, getPageSize, getTotalUsersCount, getCurrentPage, getIsFetching, getFollowingInProgress } from '../../redux/users-selectors.ts'
 // @ts-ignore
@@ -80,5 +80,5 @@ export default compose(
     connect<MapStatePropsType,
         MapDispatchPropsType,
         OwnPropsType,
-        AppStateType>(mapStateToProps, { follow, unfollow, deleteUsers, requestUsers }),
+        AppStateType>(mapStateToProps, { follow, unfollow, deleteUsers: actions.deleteUsers, requestUsers }),
 )(UsersContainer)
