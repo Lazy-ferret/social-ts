@@ -32,7 +32,7 @@ const initialState = {
 }
 
 export const actions = {
-    addMessageCreator: (newMessage: string) => ({ type: ADD_MESSAGE, newMessage } as const)
+    addMessage: (newMessage: string) => ({ type: ADD_MESSAGE, newMessage } as const)
 }
 
 const dialogsReducer = (state = initialState, action: ActionsType): InitialStateType => {

@@ -14,7 +14,7 @@ import { compose } from 'redux'
 import withRouter from './hoc/WithRouter'
 import Preloader from './components/common/Preloader/Preloader'
 
-const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'))
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer.tsx'))
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'))
 
 class App extends React.Component {
