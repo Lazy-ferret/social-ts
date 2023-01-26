@@ -13,6 +13,23 @@ import { login } from './../../redux/authReducer.ts'
 // @ts-ignore
 import style from './Login.module.css'
 
+type MapStatePropsType = {
+    isAuth: boolean
+    captchaUrl: string | null
+    error: string | null
+}
+
+type MapDispatchPropsType = {
+    login: (email: string, password: string, rememberMe: boolean, captcha: string | null) => void
+}
+
+type LoginFormValuesType = {
+    email: string
+    password: string
+    rememberMe: boolean
+    captcha: string | null
+}
+
 type LoginFormPropsType = {
     onSubmit: (values: LoginFormValuesType) => void
     error: string | null
@@ -71,24 +88,6 @@ const LoginForm: React.FC<LoginFormPropsType> = (props) => {
         </Form>
     )
 }
-
-type MapStatePropsType = {
-    isAuth: boolean
-    captchaUrl: string | null
-    error: string | null
-}
-
-type MapDispatchPropsType = {
-    login: (email: string, password: string, rememberMe: boolean, captcha: string | null) => void
-}
-
-type LoginFormValuesType = {
-    email: string
-    password: string
-    rememberMe: boolean
-    captcha: string | null
-}
-
 
 
 const Login: React.FC<MapStatePropsType & MapDispatchPropsType> = (props) => {

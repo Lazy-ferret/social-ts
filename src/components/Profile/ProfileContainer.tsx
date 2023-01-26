@@ -1,10 +1,16 @@
 import React from 'react'
-import Profile from './Profile'
+// @ts-ignore
+import Profile from './Profile.tsx'
 import { connect } from 'react-redux'
+// @ts-ignore
 import { getUserProfile, getStatus, updateStatus, savePhoto, updateProfile } from './../../redux/profileReducer.ts'
+// @ts-ignore
 import { withAuthRedirect } from '../../hoc/WithAuthRedirect.tsx'
 import { compose } from 'redux'
+// @ts-ignore
 import withRouter from '../../hoc/WithRouter.tsx'
+
+
 
 class ProfileContainer extends React.Component {
 

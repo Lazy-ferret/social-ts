@@ -1,12 +1,13 @@
+// @ts-ignore
 import { actions } from '../../../redux/profileReducer.ts'
-import MyPosts from './MyPosts'
+// @ts-ignore
+import MyPostsMemo from './MyPosts.tsx'
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => {
     return {
         posts: state.profilePage.posts,
         newPostText: state.profilePage.newPostText
-
     }
 }
 
@@ -18,6 +19,6 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
+const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPostsMemo)
 
 export default MyPostsContainer

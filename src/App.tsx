@@ -8,7 +8,8 @@ import Login from './components/Login/Login.tsx'
 import Music from './components/Music/Music'
 import Navbar from './components/Navbar/Navbar'
 import News from './components/News/News'
-import Settings from './components/Settings/Settings'
+// @ts-ignore
+import Settings from './components/Settings/Settings.tsx'
 // @ts-ignore
 import UsersContainer from './components/Users/UsersContainer.tsx'
 // @ts-ignore
@@ -23,7 +24,8 @@ import { AppStateType } from './redux/reduxStore.ts'
 
 // @ts-ignore
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer.tsx'))
-const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'))
+// @ts-ignore
+const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer.tsx'))
 
 type MapPropsType = ReturnType<typeof mapStateToProps>
 type DispatchPropsType = {
