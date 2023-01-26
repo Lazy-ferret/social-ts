@@ -10,6 +10,7 @@ import Preloader from '../common/Preloader/Preloader'
 import { compose } from 'redux'
 import { UserType } from '../../types/types'
 import { AppStateType } from '../../redux/reduxStore'
+import { ComponentType } from 'react'
 
 type MapStatePropsType = {
     currentPage: number
@@ -76,7 +77,7 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => {
     }
 }
 
-export default compose(
+export default compose<ComponentType>(
     connect<MapStatePropsType,
         MapDispatchPropsType,
         OwnPropsType,

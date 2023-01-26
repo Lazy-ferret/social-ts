@@ -14,7 +14,8 @@ import UsersContainer from './components/Users/UsersContainer.tsx'
 // @ts-ignore
 import { initializeApp } from './../src/redux/appReducer.ts'
 import { compose } from 'redux'
-import withRouter from './hoc/WithRouter'
+// @ts-ignore
+import withRouter from './hoc/WithRouter.tsx'
 import Preloader from './components/common/Preloader/Preloader'
 import { ComponentType } from 'react'
 // @ts-ignore
