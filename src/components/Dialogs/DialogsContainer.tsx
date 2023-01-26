@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import { withAuthRedirect } from '../../hoc/WithAuthRedirect'
 import { compose } from 'redux'
 import { AppStateType } from '../../redux/reduxStore'
+import { ComponentType } from 'react'
 
 
 const mapStateToProps = (state: AppStateType) => {
@@ -14,8 +15,7 @@ const mapStateToProps = (state: AppStateType) => {
     }
 }
 
-export default compose(
-    connect(mapStateToProps, {addMessage: actions.addMessage}),
+export default compose<React.ComponentType>(
+    connect(mapStateToProps, { addMessage: actions.addMessage }),
     withAuthRedirect
-    // @ts-ignore
-    )(Dialogs)
+)(Dialogs)

@@ -3,29 +3,40 @@ import { connect } from 'react-redux'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import './App.css'
 import HeaderContainer from './components/Header/HeaderContainer'
+// @ts-ignore
 import Login from './components/Login/Login.tsx'
 import Music from './components/Music/Music'
 import Navbar from './components/Navbar/Navbar'
 import News from './components/News/News'
 import Settings from './components/Settings/Settings'
+// @ts-ignore
 import UsersContainer from './components/Users/UsersContainer.tsx'
+// @ts-ignore
 import { initializeApp } from './../src/redux/appReducer.ts'
 import { compose } from 'redux'
 import withRouter from './hoc/WithRouter'
 import Preloader from './components/common/Preloader/Preloader'
+import { ComponentType } from 'react'
+// @ts-ignore
+import { AppStateType } from './redux/reduxStore.ts'
 
+// @ts-ignore
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer.tsx'))
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'))
 
-class App extends React.Component {
-  
-  // catchAllUnhandledErrors = (promiseRejectionEvent) => {
-  //   alert('Some error ')
-  // }
+type MapPropsType = ReturnType<typeof mapStateToProps>
+type DispatchPropsType = {
+  initializeApp: () => void
+}
+class App extends React.Component<MapPropsType & DispatchPropsType> {
+
+  catchAllUnhandledErrors = (e: PromiseRejectionEvent) => {
+    alert('Some error ')
+  }
 
   componentDidMount() {
     this.props.initializeApp()
-    // window.addEventListener('unhandledrejection', this.catchAllUnhandledErrors)
+    window.addEventListener('unhandledrejection', this.catchAllUnhandledErrors)
   }
 
   componentWillUnmount() {
@@ -49,7 +60,9 @@ class App extends React.Component {
           <Suspense fallback={<Preloader />}>
             <Routes >
 
-              <Route exact path="/" element={<Navigate to={'/profile'} />} />
+              <Route 
+              // exact  
+              path="/" element={<Navigate to={'/profile'} />} />
 
               <Route path="/profile/" element={<ProfileContainer />}>
                 <Route path=":userId" element={<ProfileContainer />} />
@@ -62,7 +75,7 @@ class App extends React.Component {
 
               <Route
                 path="/users"
-                element={<UsersContainer pageTitle='Users'/>} />
+                element={<UsersContainer pageTitle='Users' />} />
 
               <Route
                 path="/login"
@@ -86,18 +99,15 @@ class App extends React.Component {
           </Suspense>
         </div>
       </div>
-
-
-
     );
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: AppStateType) => ({
   initialized: state.app.initialized
 })
 
-export default compose(
+export default compose<ComponentType>(
   withRouter,
   connect(mapStateToProps, { initializeApp })
 )(App);
