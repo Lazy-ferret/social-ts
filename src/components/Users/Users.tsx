@@ -1,7 +1,8 @@
 import React from 'react'
 // @ts-ignore
 import Paginator from '../common/Paginator/Paginator.tsx'
-import User from './User'
+// @ts-ignore
+import User from './User.tsx'
 import { UserType } from './../../types/types'
 
 type PropsType = {
