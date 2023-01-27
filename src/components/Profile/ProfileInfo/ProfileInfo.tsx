@@ -3,7 +3,8 @@ import Preloader from '../../common/Preloader/Preloader'
 // @ts-ignore
 import styles from './ProfileInfo.module.css'
 // import ProfileStatus from "./ProfileStatus/ProfileStatus";
-import ProfileStatusWithHooks from './ProfileStatus/ProfileStatusWithHooks'
+// @ts-ignore
+import ProfileStatusWithHooks from './ProfileStatus/ProfileStatusWithHooks.tsx'
 // @ts-ignore
 import userPhoto from './../../../assets/images/user.jpg'
 // @ts-ignore
@@ -12,8 +13,8 @@ import ProfileDataForm from './ProfileDataForm.tsx'
 import ProfileData from './ProfileData.tsx'
 import { ProfileType } from '../../../types/types'
 
-type PropsType = {
-    profile: ProfileType
+export type ProfileInfoPropsType = {
+    profile: ProfileType | null
     savePhoto: (file: File) => void
     isOwner: boolean
     status: string
@@ -22,7 +23,7 @@ type PropsType = {
     error: string | null
 }
 
-const ProfileInfo: React.FC<PropsType> = ({ profile, savePhoto, isOwner, status, updateStatus, updateProfile, error }) => {
+const ProfileInfo: React.FC<ProfileInfoPropsType> = ({ profile, savePhoto, isOwner, status, updateStatus, updateProfile, error }) => {
     const [editMode, setEditMode] = useState(false)
 
     if (!profile) {

@@ -5,14 +5,17 @@ import { AddPostFormValuesType } from './AddPostForm/AddPostForm'
 import AddPostForm from './AddPostForm/AddPostForm.tsx'
 // @ts-ignore
 import s from './MyPosts.module.css'
-import Post from './Post/Post'
+// @ts-ignore
+import Post from './Post/Post.tsx'
 
-type PropsType = {
+export type MyPostsStatePropsType = {
     posts: Array<PostsType>
+}
+export type MyPostsDispatchPropsType = {
     addPost: (newPostText: string) => void
 }
 
-const MyPosts: React.FC<PropsType> = (props) => {
+const MyPosts: React.FC<MyPostsStatePropsType & MyPostsDispatchPropsType> = (props) => {
     const postsElements = [...props.posts]
         .reverse()
         .map(post => <Post message={post.message} likesCount={post.likesCount} key={post.id} />)

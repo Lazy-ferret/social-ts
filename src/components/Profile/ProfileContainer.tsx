@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ComponentType } from 'react'
 // @ts-ignore
 import Profile from './Profile.tsx'
 import { connect } from 'react-redux'
@@ -9,10 +9,24 @@ import { withAuthRedirect } from '../../hoc/WithAuthRedirect.tsx'
 import { compose } from 'redux'
 // @ts-ignore
 import withRouter from '../../hoc/WithRouter.tsx'
+// @ts-ignore
+import { AppStateType } from './../../redux/reduxStore.ts'
+import { ProfileType } from '../../types/types'
 
+type MapStatePropsType = ReturnType<typeof mapStateToProps>
+type MapDispatchPropsType = {
+    getUserProfile: (userId: number) => void
+    getStatus: (userId: number) => void
+    updateStatus: (status: string) => void
+    savePhoto: (file: File) => void
+    updateProfile: (profile: ProfileType) => Promise<any>
+}
+type PropsType = {
+    params: any
+    history: any
+}
 
-
-class ProfileContainer extends React.Component {
+class ProfileContainer extends React.Component<MapStatePropsType & MapDispatchPropsType & PropsType> {
 
     updateProfile() {
         let userId = this.props.params.userId
@@ -30,7 +44,7 @@ class ProfileContainer extends React.Component {
         this.updateProfile()
     }
 
-    componentDidUpdate(prevProps) {
+    componentDidUpdate(prevProps: PropsType) {
         if (this.props.params.userId !== prevProps.params.userId) {
             this.updateProfile()
         }
@@ -44,22 +58,22 @@ class ProfileContainer extends React.Component {
                 status={this.props.status}
                 error={this.props.error}
                 updateStatus={this.props.updateStatus}
-                savePhoto={this.props.savePhoto} 
+                savePhoto={this.props.savePhoto}
                 updateProfile={this.props.updateProfile}
-                />
+            />
         )
     }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: AppStateType) => ({
     profile: state.profilePage.profile,
     status: state.profilePage.status,
     authorizedUserId: state.auth.userId,
-    isAuth: state.auth.isAuth, 
+    isAuth: state.auth.isAuth,
     error: state.profilePage.error
 })
 
-export default compose(
+export default compose<ComponentType>(
     connect(mapStateToProps, { getUserProfile, getStatus, updateStatus, savePhoto, updateProfile }),
     withRouter,
     withAuthRedirect

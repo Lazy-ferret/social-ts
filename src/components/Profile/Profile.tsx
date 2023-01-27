@@ -1,10 +1,11 @@
 import React from 'react'
 // @ts-ignore
 import MyPostsContainer from './MyPosts/MyPostsContainer.tsx'
+import { ProfileInfoPropsType } from './ProfileInfo/ProfileInfo'
 // @ts-ignore
 import ProfileInfo from './ProfileInfo/ProfileInfo.tsx'
 
-const Profile = ({ profile, status, updateStatus, isOwner, savePhoto, updateProfile, error }) => {
+const Profile: React.FC<ProfileInfoPropsType> = ({ profile, status, updateStatus, isOwner, savePhoto, updateProfile, error }) => {
 
     return (
         <div >
@@ -14,8 +15,8 @@ const Profile = ({ profile, status, updateStatus, isOwner, savePhoto, updateProf
                 status={status}
                 updateStatus={updateStatus}
                 savePhoto={savePhoto}
-                updateProfile={updateProfile} 
-                error={error}/>
+                updateProfile={updateProfile}
+                error={error} />
             <MyPostsContainer />
         </div>
     )
