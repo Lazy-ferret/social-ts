@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useState } from 'react'
-import Preloader from '../../common/Preloader/Preloader'
+// @ts-ignore
+import Preloader from '../../common/Preloader/Preloader.tsx'
 // @ts-ignore
 import styles from './ProfileInfo.module.css'
 // import ProfileStatus from "./ProfileStatus/ProfileStatus";

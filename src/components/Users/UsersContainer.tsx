@@ -6,7 +6,8 @@ import { follow, unfollow, requestUsers, actions  } from '../../redux/usersReduc
 import { getUsers, getPageSize, getTotalUsersCount, getCurrentPage, getIsFetching, getFollowingInProgress } from '../../redux/users-selectors.ts'
 // @ts-ignore
 import Users from './Users.tsx'
-import Preloader from '../common/Preloader/Preloader'
+// @ts-ignore
+import Preloader from '../common/Preloader/Preloader.tsx'
 import { compose } from 'redux'
 import { UserType } from '../../types/types'
 import { AppStateType } from '../../redux/reduxStore'

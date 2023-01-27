@@ -20,7 +20,8 @@ import { initializeApp } from './../src/redux/appReducer.ts'
 import { compose } from 'redux'
 // @ts-ignore
 import withRouter from './hoc/WithRouter.tsx'
-import Preloader from './components/common/Preloader/Preloader'
+// @ts-ignore
+import Preloader from './components/common/Preloader/Preloader.tsx'
 import { ComponentType } from 'react'
 // @ts-ignore
 import { AppStateType } from './redux/reduxStore.ts'
