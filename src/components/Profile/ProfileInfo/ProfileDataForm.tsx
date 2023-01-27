@@ -1,10 +1,26 @@
 import React from 'react'
+// @ts-ignore
 import styles from './ProfileInfo.module.css'
 import { Field, Form } from 'react-final-form'
+// @ts-ignore
 import { Input, Textarea } from '../../common/FormsControl/FormsControl.tsx'
+// @ts-ignore
 import style from './../../Login/Login.module.css'
+import { ProfileType } from '../../../types/types'
 
-const ProfileDataForm = ({ profile, saveFormData, error }) => {
+type ProfileDataFormPropsType = {
+    profile: ProfileType
+    saveFormData: (values: ProfileDataFormValuesType) => void
+    error: string | null
+}
+
+export type ProfileDataFormValuesType = { 
+    fullName: string
+    lookingForAJob: boolean
+    aboutMe: string
+}
+
+const ProfileDataForm: React.FC<ProfileDataFormPropsType> = ({ profile, saveFormData, error }) => {
 
     return (
 

@@ -1,7 +1,8 @@
 import React from 'react'
 // @ts-ignore
 import styles from './ProfileInfo.module.css'
-import Contact from './Contact'
+// @ts-ignore
+import Contact from './Contact.tsx'
 import { ProfileType } from '../../../types/types'
 
 type PropsType = {

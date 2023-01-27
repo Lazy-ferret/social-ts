@@ -6,7 +6,8 @@ import styles from './ProfileInfo.module.css'
 import ProfileStatusWithHooks from './ProfileStatus/ProfileStatusWithHooks'
 // @ts-ignore
 import userPhoto from './../../../assets/images/user.jpg'
-import ProfileDataForm from './ProfileDataForm'
+// @ts-ignore
+import ProfileDataForm from './ProfileDataForm.tsx'
 // @ts-ignore
 import ProfileData from './ProfileData.tsx'
 import { ProfileType } from '../../../types/types'
