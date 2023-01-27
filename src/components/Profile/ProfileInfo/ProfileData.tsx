@@ -1,8 +1,16 @@
-import React from "react";
+import React from 'react'
+// @ts-ignore
 import styles from './ProfileInfo.module.css'
-import Contact from "./Contact";
+import Contact from './Contact'
+import { ProfileType } from '../../../types/types'
 
-const ProfileData = ({ profile, isOwner, toEditMode }) => {
+type PropsType = {
+    profile: ProfileType
+    isOwner: boolean
+    toEditMode: () => void
+}
+
+const ProfileData: React.FC<PropsType> = ({ profile, isOwner, toEditMode }) => {
     return (
         <div className={styles.description}>
             <div className={styles.name}>{profile.fullName}</div>

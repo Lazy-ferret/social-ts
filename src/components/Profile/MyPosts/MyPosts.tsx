@@ -3,6 +3,7 @@ import { PostsType } from '../../../types/types'
 import { AddPostFormValuesType } from './AddPostForm/AddPostForm'
 // @ts-ignore
 import AddPostForm from './AddPostForm/AddPostForm.tsx'
+// @ts-ignore
 import s from './MyPosts.module.css'
 import Post from './Post/Post'
 

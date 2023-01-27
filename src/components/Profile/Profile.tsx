@@ -1,7 +1,8 @@
 import React from 'react'
 // @ts-ignore
 import MyPostsContainer from './MyPosts/MyPostsContainer.tsx'
-import ProfileInfo from './ProfileInfo/ProfileInfo'
+// @ts-ignore
+import ProfileInfo from './ProfileInfo/ProfileInfo.tsx'
 
 const Profile = ({ profile, status, updateStatus, isOwner, savePhoto, updateProfile, error }) => {
 

@@ -1,26 +1,40 @@
-import React, { useState } from "react";
-import Preloader from "../../common/Preloader/Preloader";
+import React, { ChangeEvent, useState } from 'react'
+import Preloader from '../../common/Preloader/Preloader'
+// @ts-ignore
 import styles from './ProfileInfo.module.css'
 // import ProfileStatus from "./ProfileStatus/ProfileStatus";
-import ProfileStatusWithHooks from "./ProfileStatus/ProfileStatusWithHooks";
+import ProfileStatusWithHooks from './ProfileStatus/ProfileStatusWithHooks'
+// @ts-ignore
 import userPhoto from './../../../assets/images/user.jpg'
-import ProfileDataForm from "./ProfileDataForm";
-import ProfileData from "./ProfileData";
+import ProfileDataForm from './ProfileDataForm'
+// @ts-ignore
+import ProfileData from './ProfileData.tsx'
+import { ProfileType } from '../../../types/types'
 
-const ProfileInfo = ({ profile, savePhoto, isOwner, status, updateStatus, updateProfile, error }) => {
+type PropsType = {
+    profile: ProfileType
+    savePhoto: (file: File) => void
+    isOwner: boolean
+    status: string
+    updateStatus: (status: string) => void 
+    updateProfile: (profile: ProfileType) => Promise<any>
+    error: string | null
+}
+
+const ProfileInfo: React.FC<PropsType> = ({ profile, savePhoto, isOwner, status, updateStatus, updateProfile, error }) => {
     const [editMode, setEditMode] = useState(false)
 
     if (!profile) {
         return <Preloader />
     }
 
-    const onMainPhotoChanged = (e) => {
-        if (e.target.files.length) {
+    const onMainPhotoChanged = (e: ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files?.length) {
             savePhoto(e.target.files[0])
         }
     }
 
-    const saveFormData = (formData) => {
+    const saveFormData = (formData: ProfileType) => {
         updateProfile(formData)
             .then(() => setEditMode(false))
     }
