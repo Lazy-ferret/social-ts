@@ -1,10 +1,12 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+// @ts-ignore
 import s from './Navbar.module.css'
 
-const linkClassName  = NavData => NavData.isActive ? s.active : s.item  
+const linkClassName = (NavData: { isActive: boolean }) => NavData.isActive ? s.active : s.item
 
-export default function Navbar() {
+const Navbar: React.FC = () => {
+
     return (
         <nav className={s.nav}>
             <div className={`${s.item} ${s.active}`}>
@@ -28,3 +30,5 @@ export default function Navbar() {
         </nav>
     )
 }
+
+export default Navbar

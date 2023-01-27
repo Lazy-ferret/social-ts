@@ -89,7 +89,6 @@ const LoginForm: React.FC<LoginFormPropsType> = (props) => {
     )
 }
 
-
 const Login: React.FC<MapStatePropsType & MapDispatchPropsType> = (props) => {
     const onSubmit = (formData: LoginFormValuesType) => {
         props.login(formData.email, formData.password, formData.rememberMe, formData.captcha)

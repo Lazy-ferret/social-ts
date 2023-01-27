@@ -2,11 +2,14 @@ import React, { Suspense } from 'react'
 import { connect } from 'react-redux'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import './App.css'
-import HeaderContainer from './components/Header/HeaderContainer'
+// @ts-ignore
+import HeaderContainer from './components/Header/HeaderContainer.tsx'
 // @ts-ignore
 import Login from './components/Login/Login.tsx'
-import Music from './components/Music/Music'
-import Navbar from './components/Navbar/Navbar'
+// @ts-ignore
+import Music from './components/Music/Music.tsx'
+// @ts-ignore
+import Navbar from './components/Navbar/Navbar.tsx'
 import News from './components/News/News'
 // @ts-ignore
 import Settings from './components/Settings/Settings.tsx'

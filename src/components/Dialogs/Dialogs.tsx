@@ -5,10 +5,12 @@ import { InitialStateType } from '../../redux/dialogsReducer'
 import { composeValidators, maxLengthCreator, requiredField } from '../../utils/validators/validators.ts'
 // @ts-ignore
 import { Textarea } from '../common/FormsControl/FormsControl.tsx'
-import DialogItem from './DialogItem/DialogItem'
+// @ts-ignore
+import DialogItem from './DialogItem/DialogItem.tsx'
 // @ts-ignore
 import s from './Dialogs.module.css'
-import Message from './Message/Message'
+// @ts-ignore
+import Message from './Message/Message.tsx'
 
 type PropsType = {
     dialogsPage: InitialStateType
