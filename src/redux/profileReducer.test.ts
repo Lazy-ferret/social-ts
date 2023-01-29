@@ -1,5 +1,6 @@
 
-import profileReducer, { actions } from './profileReducer'
+// @ts-ignore
+import profileReducer, { actions } from './profileReducer.ts'
 
 const state = {
     posts: [

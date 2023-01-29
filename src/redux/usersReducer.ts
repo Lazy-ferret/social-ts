@@ -24,7 +24,7 @@ const initialState = {
     followingInProgress: [] as Array<number>
 }
 
-type InitialState = typeof initialState
+export type InitialState = typeof initialState
 type ActionsType = InferActionsTypes<typeof actions>
 type ThunkType = BaseThunkType<ActionsType>
 

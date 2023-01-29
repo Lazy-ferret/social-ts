@@ -36,7 +36,7 @@ export const actions = {
     setError: (error: string | null) => ({ type: SET_ERROR, error } as const)
 }
 
-const profileReducer = (state = initialState, action: ActionsType): InitialStateType => {
+export const profileReducer = (state = initialState, action: ActionsType): InitialStateType => {
     switch (action.type) {
         case ADD_POST:
             const newPost = {
