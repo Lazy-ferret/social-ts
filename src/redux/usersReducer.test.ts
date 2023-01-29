@@ -1,8 +1,6 @@
 /* eslint-disable jest/valid-title */
 // @ts-ignore
-
-
-import usersReducer, { actions, InitialState } from "./usersReducer.ts"
+import usersReducer, { actions, InitialState } from './usersReducer.ts'
 
 let state: InitialState
 
