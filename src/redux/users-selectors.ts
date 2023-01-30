@@ -24,6 +24,10 @@ export const getCurrentPage = (state: AppStateType) => {
     return state.usersPage.currentPage
 }
 
+export const getUsersFilter = (state: AppStateType) => {
+    return state.usersPage.filter
+}
+
 export const getIsFetching = (state: AppStateType) => {
     return state.usersPage.isFetching
 }

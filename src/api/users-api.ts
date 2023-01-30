@@ -3,10 +3,12 @@ import { instance, GetItemsType, APIResponseType } from './api.ts'
 // @ts-ignore
 import { profileAPI } from './profile-api.ts'
 
+
+
 export const usersAPI = {
-    getUsers(currentPage: number = 1, pageSize: number = 10) {
+    getUsers(currentPage: number = 1, pageSize: number = 10, term: string = '', friend: null | boolean = null) {
         return instance
-            .get<GetItemsType>(`users?page=${currentPage}&count=${pageSize}`)
+            .get<GetItemsType>(`users?page=${currentPage}&count=${pageSize}&term=${term}` + (friend === null ? '' : `&friend=${friend}`))
             .then(response => response.data)
     },
     followUser(userId: number) {
